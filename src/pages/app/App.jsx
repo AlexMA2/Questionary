@@ -1,20 +1,9 @@
-import { useState } from 'react'
-import logo from '../../assets/logo.svg'
-import './App.css'
-import Editor from '../../components/Editor/Editor'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="App">    
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <Editor />
-     
-    </div>
+    <main className="bg-black">
+      <div>
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      </div>
+    </main>
   )
 }
-
-export default App
