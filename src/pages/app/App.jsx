@@ -74,6 +74,7 @@ function App() {
         answers={answersForChoice}
       />
       <Question type={FILLIN} question="Escriba su opinion sobre Peru" />
+      <Question type={TRUE_FALSE} question="¿Los peces viven en el agua?" />
     </div>
   )
 }

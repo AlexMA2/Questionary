@@ -36,7 +36,9 @@ const Question = ({ type = MULTIPLE_CHOICE, question, answers = [] }) => {
 
   return (
     <div>
-      <h1 className="text-4xl text-center antialiased font-bold">{question}</h1>
+      <h1 className="text-4xl text-center my-5 antialiased font-bold">
+        {question}
+      </h1>
       {typeQuestion}
     </div>
   )

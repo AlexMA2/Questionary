@@ -18,7 +18,7 @@ const Answer = ({
     >
       <input
         type="checkbox"
-        className="bg-gray rounded-full w-4 h-4 mr-2 align-middle"
+        className="bg-gray rounded-full w-4 h-4 mr-2 align-middle cursor-pointer"
         checked={selected}
         onChange={() => {}}
       ></input>
