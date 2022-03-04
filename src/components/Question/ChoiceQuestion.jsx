@@ -5,7 +5,7 @@ import { useState } from 'react'
 const ChoiceQuestion = ({ answers }) => {
   const [answerSelected, setAnswerSelected] = useState('')
 
-  const onSelectAnswer = (ev, answer) => {
+  const onSelectAnswer = (answer) => {
     setAnswerSelected(answer)
   }
 

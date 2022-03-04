@@ -1,28 +1,16 @@
 import { useState } from 'react'
 import Question from '../../components/Question/Question.jsx'
+import {
+  MULTIPLE_CHOICE,
+  FILLIN,
+  TRUE_FALSE,
+  MATCHING
+} from '../../utils/typesQuestions'
 
 function App() {
   const [count, setCount] = useState(0)
 
   const answersForChoice = [
-    {
-      id: 1,
-      text: 'Answer 1',
-      correct: true
-    },
-    {
-      id: 2,
-      text: 'Answer 2',
-      correct: false
-    },
-    {
-      id: 3,
-      text: 'Answer 3',
-      correct: false
-    }
-  ]
-
-  const answersForFillin = [
     {
       id: 1,
       text: 'Answer 1',
@@ -81,10 +69,11 @@ function App() {
       <h1 className="text-3xl font-bold underline">Examen</h1>
 
       <Question
-        type="choice"
+        type={MULTIPLE_CHOICE}
         question="¿Cuanto es 2 + 2?"
         answers={answersForChoice}
       />
+      <Question type={FILLIN} question="Escriba su opinion sobre Peru" />
     </div>
   )
 }
