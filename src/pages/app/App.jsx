@@ -1,7 +1,6 @@
 import { useState } from "react";
-import logo from "../../assets/logo.svg";
-import "./App.css";
 import Question from "../../components/Question/Question.jsx";
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
