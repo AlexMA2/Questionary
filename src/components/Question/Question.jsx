@@ -5,21 +5,28 @@ import FillQuestion from './FillQuestion'
 import MatchQuestion from './MatchQuestion'
 import TFQuestion from './TFQuestion'
 
-const Question = ({ type = 'choice', question, answers = [] }) => {
+import {
+  MULTIPLE_CHOICE,
+  FILLIN,
+  TRUE_FALSE,
+  MATCHING
+} from '../../utils/typesQuestions'
+
+const Question = ({ type = MULTIPLE_CHOICE, question, answers = [] }) => {
   const [typeQuestion, setTypeQuestion] = useState(null)
 
   useEffect(() => {
     switch (type) {
-      case 'choice':
+      case MULTIPLE_CHOICE:
         setTypeQuestion(<ChoiceQuestion answers={answers} />)
         break
-      case 'fill':
+      case FILLIN:
         setTypeQuestion(<FillQuestion />)
         break
-      case 'match':
+      case MATCHING:
         setTypeQuestion(<MatchQuestion answers={answers} />)
         break
-      case 'tf':
+      case TRUE_FALSE:
         setTypeQuestion(<TFQuestion />)
         break
       default:
