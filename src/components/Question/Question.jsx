@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Answer from '../Answer'
 import ChoiceQuestion from './ChoiceQuestion'
 import FillQuestion from './FillQuestion'
 import MatchQuestion from './MatchQuestion'
