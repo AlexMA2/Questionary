@@ -12,6 +12,16 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem'
+      },
+      colors: {
+        white: '#fafafa',
+        blue: '#1fb6ff',
+        purple: '#7e5bef',
+
+        orange: '#ff7849',
+        green: '#13ce66',
+        gray: '#8492a6',
+        'gray-light': '#d3dce6'
       }
     }
   },

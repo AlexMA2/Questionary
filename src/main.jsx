@@ -1,14 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './tailwind.css'
-import App from './pages/app/App'
-import AppLayout from './components/Layouts/AppLayout'
+import './index.css'
+import App from '../src/pages/app/App'
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppLayout>
-      <App />
-    </AppLayout>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )
