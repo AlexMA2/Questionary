@@ -82,7 +82,7 @@ function App() {
 
       <Question
         type="choice"
-        question="PREGUNTAAA"
+        question="¿Cuanto es 2 + 2?"
         answers={answersForChoice}
       />
     </div>
