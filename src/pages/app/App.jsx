@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../../assets/logo.svg";
 import "./App.css";
-import Question from "../../components/Question";
+import Question from "../../components/Question/Question.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -81,14 +81,12 @@ function App() {
   return (
     <div className="App min-h-screen max-w-6xl m-auto">
       <h1 className="text-3xl font-bold underline">Examen</h1>
+
       <Question
-        type="truefalse"
-        question="PREGUNTA"
+        type="choice"
+        question="PREGUNTAAA"
         answers={answersForChoice}
       />
-      <Question type="fillin" question="PREGUNTA" answers={answersForFillin} />
-      <Question type="choice" question="PREGUNTA" answers={answersForTF} />
-      
     </div>
   );
 }

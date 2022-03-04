@@ -8,7 +8,7 @@ const MatchQuestion = ({question, answers}) => {
       <div className="flex flex-row items-center">
         <div className="w-1/2">
             {
-                answers.options.map((opt) => {
+                answers.map((opt) => {
                     <button> {opt}</button>
                 })
             }
@@ -16,7 +16,7 @@ const MatchQuestion = ({question, answers}) => {
         </div>
         <div className="w-1/2">
             {
-                answers.matchs.map((mat) => {
+                answers.map((mat) => {
                     <button> {mat}</button>
                 })
             }
