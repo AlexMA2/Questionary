@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react'
 const Answer = ({
   text = 'This should be an answer',

@@ -1,5 +1,10 @@
 module.exports = {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}',
+    './src/ui/*.jsx',
+    './src/components/*.jsx'
+  ],
   theme: {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -17,12 +22,15 @@ module.exports = {
         white: '#fafafa',
         blue: '#1fb6ff',
         purple: '#7e5bef',
-
         orange: '#ff7849',
+        'orange-dark': '#ff6f00',
+        'orange-light': '#ff9f00',
         green: '#13ce66',
-        gray: '#8492a6',
+        'green-dark': '#0f9b4e',
+        'green-light': '#e6fffa',
+        gray: '#f0f0f0',
         'gray-light': '#d3dce6',
-        'gray-light-200': '#A1B4C9'
+        'gray-dark': '#b3b7bd'
       }
     }
   },

@@ -6,9 +6,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-        "eslint": "eslint . --fix"
+    "eslint": "eslint . --fix",
+    "crossenv": "cross-env TAILWIND_MODE=watch vite"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
