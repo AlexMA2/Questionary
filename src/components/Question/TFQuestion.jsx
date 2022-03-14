@@ -1,26 +1,25 @@
-import React from 'react'
-import { useState } from 'react'
-import TFQuestionButton from '../TFQuestionButton'
+import useAnswer from '../../hooks/useAnswer'
 import { IS_TRUE, IS_FALSE } from '../../utils/TFQuestionAnswers'
+import Button from '../../ui/Button'
 
-const TFQuestion = () => {
-  const [answerSelected, setAnswerSelected] = useState(null)
-
-  const handleAnswerSelected = (name) => {
-    setAnswerSelected(name)
-  }
+const TFQuestion = ({ id }) => {
+  const [answerSelected, handleAnswerSelected] = useAnswer(id)
 
   return (
     <div className="flex flex-row w-full items-center">
-      <TFQuestionButton
-        name={IS_TRUE}
-        color="bg-green"
+      <Button
+        backgroundColor="bg-green"
+        width="w-1/2"
+        text={IS_TRUE}
+        value={IS_TRUE}
         onClick={handleAnswerSelected}
         selected={answerSelected === IS_TRUE}
       />
-      <TFQuestionButton
-        name={IS_FALSE}
-        color="bg-orange"
+      <Button
+        backgroundColor="bg-orange"
+        width="w-1/2"
+        text={IS_FALSE}
+        value={IS_FALSE}
         onClick={handleAnswerSelected}
         selected={answerSelected === IS_FALSE}
       />

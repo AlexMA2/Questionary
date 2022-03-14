@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Question from '../../components/Question/Question.jsx'
 import {
   MULTIPLE_CHOICE,
@@ -8,8 +7,6 @@ import {
 } from '../../utils/typesQuestions'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   const answersForChoice = [
     {
       id: 1,
@@ -46,6 +43,31 @@ function App() {
     }
   ]
 
+  const questions = [
+    {
+      id: 1,
+      type: MULTIPLE_CHOICE,
+      heading: '¿Cuanto es 2 + 2?',
+      answers: answersForChoice
+    },
+    {
+      id: 2,
+      type: FILLIN,
+      heading: 'Escriba su opinion sobre Peru'
+    },
+    {
+      id: 3,
+      type: TRUE_FALSE,
+      heading: '¿Los peces viven en el agua?'
+    },
+    {
+      id: 4,
+      type: MATCHING,
+      heading: 'Relaciona pais con gentilicio',
+      answers: answersForMatch
+    }
+  ]
+
   return (
     <div className="App min-h-screen max-w-6xl m-auto ">
       <div className="bg-green-dark hidden"></div>
@@ -55,18 +77,10 @@ function App() {
         Examen
       </h1>
 
-      <Question
-        type={MULTIPLE_CHOICE}
-        question="¿Cuanto es 2 + 2?"
-        answers={answersForChoice}
-      />
-      <Question type={FILLIN} question="Escriba su opinion sobre Peru" />
-      <Question type={TRUE_FALSE} question="¿Los peces viven en el agua?" />
-      <Question
-        type={MATCHING}
-        question="Relaciona pais con gentilicio"
-        answers={answersForMatch}
-      />
+      <Question question={questions[0]} />
+      <Question question={questions[1]} />
+      <Question question={questions[2]} />
+      <Question question={questions[3]} />
     </div>
   )
 }

@@ -1,13 +1,8 @@
-import Answer from '../Answer'
-import { useState } from 'react'
 import Button from '../../ui/Button'
+import useAnswer from '../../hooks/useAnswer'
 
-const ChoiceQuestion = ({ answers }) => {
-  const [answerSelected, setAnswerSelected] = useState('')
-
-  const onSelectAnswer = (answer) => {
-    setAnswerSelected(answer)
-  }
+const ChoiceQuestion = ({ id, answers }) => {
+  const [answerSelected, handleAnswerSelected] = useAnswer(id)
 
   return (
     <div>
@@ -27,7 +22,8 @@ const ChoiceQuestion = ({ answers }) => {
             backgroundColor="bg-gray"
             width="w-11/12"
             text={ans.text}
-            onClick={onSelectAnswer}
+            value={ans.text}
+            onClick={handleAnswerSelected}
             selected={answerSelected === ans.text}
           />
         )

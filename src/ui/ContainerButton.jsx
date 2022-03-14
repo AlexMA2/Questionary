@@ -1,7 +1,5 @@
-import React from 'react'
-
-const ContainerButton = ({ children, list }) => {
-  return <div>{children}</div>
+const ContainerButton = () => {
+  return <div>ContainerButton</div>
 }
 
 export default ContainerButton

@@ -1,12 +1,11 @@
-import React from 'react'
 import { useState } from 'react'
+import Button from '../../ui/Button'
+import useAnswer from '../../hooks/useAnswer'
 
-const FillQuestion = () => {
-  const [answer, setAnswer] = useState('')
+const FillQuestion = ({ id }) => {
+  const [answerSelected, handleAnswerSelected] = useAnswer(id)
 
-  const handleChange = (e) => {
-    setAnswer(e.target.value)
-  }
+  const [text, setText] = useState('')
 
   return (
     <div className="w-2/3 m-auto">
@@ -16,8 +15,29 @@ const FillQuestion = () => {
         id=""
         cols="50"
         rows="10"
-        onChange={handleChange}
+        value={text}
+        onChange={(event) => {
+          setText(event.target.value)
+        }}
       ></textarea>
+      <div className="flex flex-row w-full justify-center">
+        <Button
+          backgroundColor="bg-slate-300"
+          width="w-40"
+          text="Guardar"
+          value={text}
+          onClick={handleAnswerSelected}
+        ></Button>
+        <Button
+          backgroundColor="bg-slate-300"
+          width="w-40"
+          text="Borrar Todo"
+          value={text}
+          onClick={() => {
+            setText('')
+          }}
+        ></Button>
+      </div>
     </div>
   )
 }

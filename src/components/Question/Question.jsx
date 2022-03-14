@@ -11,25 +11,27 @@ import {
   MATCHING
 } from '../../utils/typesQuestions'
 
-const Question = ({ type = MULTIPLE_CHOICE, question, answers = [] }) => {
+const Question = ({ question }) => {
   const [typeQuestion, setTypeQuestion] = useState(null)
+
+  const { id, type, heading, answers } = question
 
   useEffect(() => {
     switch (type) {
       case MULTIPLE_CHOICE:
-        setTypeQuestion(<ChoiceQuestion answers={answers} />)
+        setTypeQuestion(<ChoiceQuestion id={id} answers={answers} />)
         break
       case FILLIN:
-        setTypeQuestion(<FillQuestion />)
+        setTypeQuestion(<FillQuestion id={id} />)
         break
       case MATCHING:
-        setTypeQuestion(<MatchQuestion answers={answers} />)
+        setTypeQuestion(<MatchQuestion id={id} answers={answers} />)
         break
       case TRUE_FALSE:
-        setTypeQuestion(<TFQuestion />)
+        setTypeQuestion(<TFQuestion id={id} />)
         break
       default:
-        setTypeQuestion(<ChoiceQuestion answers={answers} />)
+        setTypeQuestion(<ChoiceQuestion id={id} answers={answers} />)
         break
     }
   }, [])
@@ -37,7 +39,7 @@ const Question = ({ type = MULTIPLE_CHOICE, question, answers = [] }) => {
   return (
     <div>
       <h1 className="text-4xl text-center my-5 antialiased font-bold">
-        {question}
+        {heading}
       </h1>
       {typeQuestion}
     </div>
