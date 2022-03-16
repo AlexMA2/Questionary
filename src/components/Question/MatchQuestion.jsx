@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Button from '../../ui/Button'
 import useAnswer from '../../hooks/useAnswer'
 
+import { removeItem, randomizedArray } from '../../utils/array'
+
 const MatchQuestion = ({ id, answers }) => {
   const [answerSelected, handleAnswerSelected] = useAnswer(id)
+
+  const pointLeft = useRef(null)
+  const pointRight = useRef(null)
 
   const [optionsLeft, setOptionsLeft] = useState([])
   const [optionsRight, setOptionsRight] = useState([])
@@ -12,15 +17,26 @@ const MatchQuestion = ({ id, answers }) => {
   const [answerSelectedRight, setAnswerSelectedRight] = useState('')
   const [answerSelectedLeft, setAnswerSelectedLeft] = useState('')
 
-  const randomizedArray = (array) => {
-    const newArray = [...array]
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      const temp = newArray[i]
-      newArray[i] = newArray[j]
-      newArray[j] = temp
+  // Cuando una opcion intenta relacionarse con dos opciones
+  const isAnswerDuplicated = (array, answer, anotherAnswer) => {
+    return array.findIndex((item, index) => {
+      if (item.L === answer) {
+        return item.R !== anotherAnswer
+      } else if (item.R === answer) {
+        return item.L !== anotherAnswer
+      }
+      return false
+    })
+  }
+
+  const fixDoubleAnswer = (array, answer, anotherAnswer) => {
+    const itemFoundedIndex = isAnswerDuplicated(array, answer, anotherAnswer)
+
+    if (itemFoundedIndex > -1) {
+      const newCompleteAnswer = removeItem(array, itemFoundedIndex)
+      return newCompleteAnswer
     }
-    return newArray
+    return array
   }
 
   useEffect(() => {
@@ -30,9 +46,38 @@ const MatchQuestion = ({ id, answers }) => {
 
   useEffect(() => {
     if (answerSelectedLeft !== '' && answerSelectedRight !== '') {
-      setCompleteAnswer(answerSelectedLeft + '-' + answerSelectedRight)
+      let newCompleteAnswer = [...completeAnswer]
+      newCompleteAnswer = fixDoubleAnswer(
+        newCompleteAnswer,
+        answerSelectedLeft,
+        answerSelectedRight
+      )
+
+      newCompleteAnswer = fixDoubleAnswer(
+        newCompleteAnswer,
+        answerSelectedRight,
+        answerSelectedLeft
+      )
+
+      newCompleteAnswer = [
+        ...newCompleteAnswer,
+        { L: answerSelectedLeft, R: answerSelectedRight }
+      ]
+      if (newCompleteAnswer.length <= answers.length) {
+        setCompleteAnswer(newCompleteAnswer)
+      }
+      setAnswerSelectedRight('')
+      setAnswerSelectedLeft('')
     }
   }, [answerSelectedLeft, answerSelectedRight])
+
+  useEffect(() => {
+    // Funcion para dibujar una linea entre dos puntos sin CANVAS
+
+    if (completeAnswer.length === answers.length) {
+      handleAnswerSelected(completeAnswer)
+    }
+  }, [completeAnswer])
 
   return (
     <div className="flex flex-row items-center">
@@ -45,8 +90,9 @@ const MatchQuestion = ({ id, answers }) => {
                 <input
                   type="radio"
                   className="bg-gray rounded-full w-4 h-4 mr-2 align-middle relative right-3 cursor-pointer"
-                  checked={answerSelectedRight === opt}
+                  checked={answerSelectedLeft === opt}
                   onChange={() => {}}
+                  ref={pointLeft}
                 ></input>
               }
               elementPosition="right"
@@ -55,9 +101,9 @@ const MatchQuestion = ({ id, answers }) => {
               text={opt}
               value={opt}
               onClick={() => {
-                setAnswerSelectedRight(opt)
+                setAnswerSelectedLeft(opt)
               }}
-              selected={answerSelectedRight === opt}
+              selected={answerSelectedLeft === opt}
             />
           )
         })}
@@ -71,8 +117,9 @@ const MatchQuestion = ({ id, answers }) => {
                 <input
                   type="radio"
                   className="bg-gray rounded-full w-4 h-4 mr-2 align-middle relative left-3 cursor-pointer"
-                  checked={answerSelectedLeft === opt}
+                  checked={answerSelectedRight === opt}
                   onChange={() => {}}
+                  ref={pointRight}
                 ></input>
               }
               elementPosition="left"
@@ -81,9 +128,9 @@ const MatchQuestion = ({ id, answers }) => {
               text={opt}
               value={opt}
               onClick={() => {
-                setAnswerSelectedLeft(opt)
+                setAnswerSelectedRight(opt)
               }}
-              selected={answerSelectedLeft === opt}
+              selected={answerSelectedRight === opt}
             />
           )
         })}
