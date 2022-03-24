@@ -1,5 +1,5 @@
 import useAnswer from '../../hooks/useAnswer'
-import { IS_TRUE, IS_FALSE } from '../../utils/TFQuestionAnswers'
+import { IS_TRUE, IS_FALSE } from '../../utils/CONSTANTS.JS'
 import Button from '../../ui/Button'
 
 const TFQuestion = ({ id }) => {

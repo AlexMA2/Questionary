@@ -30,7 +30,8 @@ module.exports = {
         'green-light': '#e6fffa',
         gray: '#f0f0f0',
         'gray-light': '#d3dce6',
-        'gray-dark': '#b3b7bd'
+        'gray-dark': '#b3b7bd',
+        'black-100': '#212121'
       }
     }
   },

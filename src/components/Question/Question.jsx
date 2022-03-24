@@ -9,7 +9,7 @@ import {
   FILLIN,
   TRUE_FALSE,
   MATCHING
-} from '../../utils/typesQuestions'
+} from '../../utils/CONSTANTS.js'
 
 const Question = ({ question }) => {
   const [typeQuestion, setTypeQuestion] = useState(null)
